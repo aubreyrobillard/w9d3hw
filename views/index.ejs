@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Animals App</title>
+</head>
+<body>
+    <main>
+        <div>
+            <!-- for of loop for the array of animals-->
+            <% for (animal of animals) { %>  
+                <article>
+                    <a href="/animals/<%= animal._id %>">
+                        <h2>
+                            <%= animal.species %>
+                        </h2>
+                    </a>
+                </article>
+            <% } %>
+
+            <a href="/animals/new"><button>Add a New Animal</button></a>
+        </div>
+    </main>
+</body>
+</html>
