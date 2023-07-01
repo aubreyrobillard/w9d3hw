@@ -44,11 +44,11 @@ app.get('/animals', async (req, res) => {
 
 //get a single animal object from list using id# in url//
 app.get('/animals/:id', async (req, res) => {
-    const id = req.body.id;
+    const id = req.body._id;
     const animal = await AnimalModel.findById(req.params.id)
     // res.json(oneAnimal)
     
-    res.render('show.ejs', { allAnimals })
+    res.render('show.ejs', { animal })
 })
 
 
