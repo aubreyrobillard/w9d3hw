@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Animals App</title>
+</head>
+<body>
+    <main>
+        <div>
+            
+            <h1>
+                Species: <%= animal.species %>
+            </h1>
+    
+            <h2>
+                Extinct: <%= animal.extinct %>
+                <br>
+                Location: <%= animal.location %>
+                <br>
+                Life Expectancy: <%= animal.lifeExpectancy %> years
+            </h2>
+           
+            <a href="/animals/<%=animal._id%>/edit"><button>Edit the <%=animal.species%></button></a>
+        
+            <form action="/animals/<%=animal._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="delete">
+            </form>   
+
+            <a href="/animals"><button>Back to Homepage</button></a>
+
+        </div>
+    </main>
+</body>
+</html>

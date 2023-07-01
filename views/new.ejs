@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Animals App</title>
+</head>
+<body>
+    <main>
+        <div>
+            <form action="/animals" method="post">
+                <fieldset>
+                    <legend>Create Add a New Animal</legend>
+                    <label>Species: <input type="text" name="species" placeholder="enter species name"/></label>
+                    <label>extinct: <input type="checkbox" name="extinct"/></label>
+                    <label>Location: <input type="text" name="location" placeholder="where can you find them?"/></label>
+                    <label>Life Expectancy: <input type="text" name="lifeExpectancy" placeholder="enter species life expectancy"/></label>
+                    <input type="submit" value="Add New Animal"/>
+                </fieldset>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

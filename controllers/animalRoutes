@@ -1,0 +1,64 @@
+const express = require('express');
+const AnimalModel = require('../models/animals.js');
+
+const router = express.Router();
+
+
+///////////////////////
+// Declare Routes and Routers 
+///////////////////////
+// INDUCES - Index, New, Delete, Update, Create, Edit, Show
+
+// READ //
+//get full list of animals on main page//
+router.get('/', async (req, res) => {
+    const allAnimals = await AnimalModel.find({});
+    res.render('index.ejs', { animals: allAnimals })
+});
+
+
+//get a single animal object from list using id# in url//
+router.get('/:id', async (req, res) => {
+    const id = req.body._id;
+    const animal = await AnimalModel.findById(req.params.id)
+    // res.json(oneAnimal)
+    
+    res.render('show.ejs', { animal })
+})
+
+
+// CREATE //
+//create and add a whole new animal/object to list//
+router.get('/new', (req, res) => {
+    res.render('new.ejs')
+})
+
+router.post('/', async (req, res) => {
+    if (req.body.extinct === "on" ? true : false);
+    await AnimalModel.create(req.body);
+    res.redirect('/animals')
+});
+
+// UPDATE //
+//edit an animal object in list
+router.put('/:id/edit', async (req, res) => {
+    try {
+        await AnimalModel.findByIdAndUpdate(req.params.id, req.body)
+    } catch{
+        res.status(400).send('error')
+    }
+});
+
+
+// DELETE //
+//delete an animal object from list
+router.delete('/:id', async (req, res) => {
+    try {
+        await AnimalModel.findByIdAndDelete(req.params.id)
+        res.send('deleted')
+    } catch{
+        res.status(400).send('error')
+    }
+});
+
+module.exports = router;
