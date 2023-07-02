@@ -31,22 +31,34 @@ router.get('/:id', async (req, res) => {
 //create and add a whole new animal/object to list//
 router.get('/new', (req, res) => {
     res.render('new.ejs')
+    // console.log('hey there')
 })
 
 router.post('/', async (req, res) => {
-    if (req.body.extinct === "on" ? true : false);
+    if(req.body.extinct = "on"){
+        req.body.extinct === true
+    } else {
+        req.body.extint === false
+    };
     await AnimalModel.create(req.body);
+
     res.redirect('/animals')
 });
 
-// UPDATE //
+// EDIT (UPDATE) //
 //edit an animal object in list
-router.put('/:id/edit', async (req, res) => {
-    try {
-        await AnimalModel.findByIdAndUpdate(req.params.id, req.body)
-    } catch{
-        res.status(400).send('error')
-    }
+router.get('/:id/edit', async (req, res) => {
+    const id = req.params.id;
+    const animal = await AnimalModel.findById(id);
+
+    res.render('edit.ejs', { animal })
+})
+
+router.put('/:id', async (req, res) => {
+        const id = req.params.id;
+        req.body.extinct = req.body.extinct === "on" ? true : false;
+        await AnimalModel.findByIdAndUpdate(id, req.body)
+        res.redirect('/animals')
 });
 
 
@@ -55,7 +67,7 @@ router.put('/:id/edit', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         await AnimalModel.findByIdAndDelete(req.params.id)
-        res.send('deleted')
+        // res.send('deleted')
     } catch{
         res.status(400).send('error')
     }

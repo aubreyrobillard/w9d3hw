@@ -9,8 +9,10 @@ const express = require('express'); //pulling express from node_modules
 require('dotenv').config(); //pulling the info from the .env file (PORT, mongo)
 const app = express(); //setting up express app
 const PORT = process.env.PORT; //defining the PORT variable to use in our app.listen
+const methodOverride = require('method-override');
 const morgan = require('morgan'); //pulling morgan from the node_modules
 const AnimalRouter = require('./controllers/animalRoutes')
+
 
 //////////////////////
 // Declare Middleware
@@ -22,6 +24,7 @@ app.use(express.static('public')); //this middleware makes sure we can use the j
 //static files are files that don't change when the application is running
 app.use(express.urlencoded({extended: false}));
 app.use(express.json()) //this middleware is added to see the json object in postman
+app.use(methodOverride('_method'));
 
 
 app.use('/animals', AnimalRouter); 

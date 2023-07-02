@@ -7,5 +7,14 @@
 </head>
 <body>
     <h1> You've reached the edit an animal page </h1>
+    <form action="/animals/<%=animal._id%>?_method=PUT" method="POST">
+        <fieldset>
+            <label>Species: <input type="text" name="species" value="<%=animal.species%>"/></label> <br>
+            <label>extinct: <input type="checkbox" name="extinct" <% animal.extinct ? "check" : "" %>/></label> <br>
+            <label>Location: <input type="text" name="location" value="<%= animal.location%>"/></label> <br>
+            <label>Life Expectancy: <input type="number" name="lifeExpectancy" value="<%= animal.lifeExpectancy%>"/></label> <br>
+            <input type="submit" value="Save Changes"/>
+        </fieldset>
+    </form>
 </body>
 </html>
