@@ -22,7 +22,7 @@ app.use(express.urlencoded());
 app.use(morgan('dev')); //this middleware allows us to see the number code when refreshing page/errors/etc.
 app.use(express.static('public')); //this middleware makes sure we can use the js and css file in our public folder so that the css we use on the page will show up
 //static files are files that don't change when the application is running
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false}))
 app.use(express.json()) //this middleware is added to see the json object in postman
 app.use(methodOverride('_method'));
 
